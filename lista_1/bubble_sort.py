@@ -14,22 +14,31 @@ BUBBLESORT(A)
 
 def BUBBLE_SORT(A):
     for i in range( len(A) ):
-        for j in reversed( range( i, len(A) ) ):
+        for j in reversed( range( i+1, len(A) ) ):
             if A[j] < A[j-1]:
                 A[j], A[j-1] = A[j-1], A[j] ##3 zamiany
 
-A = randints( 1, 100, 10 )
-BUBBLE_SORT( A )
-print(A)
+# A = randints( 1, 100, 10 )
+# BUBBLE_SORT( A )
+# print(A)
 
-for _ in range(10**4):    
-    A = randints( 1, 100, 10 )
-    B = A.copy()
-    BUBBLE_SORT( A )
-    B.sort()
-    if not A.all()==B.all():
-        print('Uff')
+# for _ in range(10**4):    
+#     A = randints( 1, 100, 10 )
+#     B = A.copy()
+#     BUBBLE_SORT( A )
+#     B.sort()
+#     if not np.array_equal(A, B):
+#         print('Uff')
 
-
+def BUBBLE_SORT_PLUS(A):
+    porownania = 0
+    przypisania = 0
+    for i in range( len(A) ):
+        for j in reversed( range( i+1, len(A) ) ):
+            porownania += 1
+            if A[j] < A[j-1]:
+                A[j], A[j-1] = A[j-1], A[j] ##3 zamiany
+                przypisania += 3
+    return porownania, przypisania
 
 

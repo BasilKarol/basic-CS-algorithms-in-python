@@ -65,18 +65,26 @@ def MERGE( A, p, s, k):
             A[l] = R[j]
             j += 1
 
-def MERGE_SORT(A, p, k):
+def MERGE_SORT_21(A, p, k):
     if p < k:
-        s = int( (p+k)/2 )
-        MERGE_SORT( A, p, s )
-        MERGE_SORT( A, s+1, k )
-        MERGE( A, p, s, k )
+        s = int((k - p)/3)*2 + p
+
+        MERGE_SORT_21(A, p, s)
+        MERGE_SORT_21(A, s+1, k)
+
+        MERGE(A, p, s, k)
+        
+for _ in range(10**4):    
+    A = randints( 1, 100, 10 )
+    B = A.copy()
+    MERGE_SORT_21( A, 0, len(A)-1 )
+    B.sort()
+    if not np.array_equal(A, B):
+        print('Uff')
         
 # A = randints( 1, 100, 10 )
 # MERGE_SORT( A, 0, len(A)-1 )
 # print(A)
-
-
 
 def v_sum(*vectors):
     a, b = 0, 0
