@@ -74,14 +74,6 @@ def MERGE_SORT_21(A, p, k):
 
         MERGE(A, p, s, k)
         
-for _ in range(10**4):    
-    A = randints( 1, 100, 10 )
-    B = A.copy()
-    MERGE_SORT_21( A, 0, len(A)-1 )
-    B.sort()
-    if not np.array_equal(A, B):
-        print('Uff')
-        
 # A = randints( 1, 100, 10 )
 # MERGE_SORT( A, 0, len(A)-1 )
 # print(A)
@@ -97,7 +89,7 @@ def MERGE_PLUS( A, p, s, k):
     porownania, przypisania = 0, 0
     ## A[p:s]=L i A[s+1:k]=R są posortowane
     ## n1 = len(L) = p-k+1 oraz n2 = len(R) = k-s
-    print( porownania, przypisania)
+    # print( porownania, przypisania)
     L = A[p:s+1] 
     R = A[s+1:k+1] 
     L = np.append( L, np.inf )
@@ -116,11 +108,13 @@ def MERGE_PLUS( A, p, s, k):
         porownania += 1
     return porownania, przypisania
 
-def MERGE_SORT_PLUS(A, p, k):
+def MERGE_SORT_21_PLUS(A, p=0, k=0, full_size=False):
+    if full_size:
+        p, k = 0, len(A)-1
     if p < k:
-        s = int( (p+k)/2 )
-        porownania_1, przypisania_1 = MERGE_SORT_PLUS( A, p, s )
-        porownania_2, przypisania_2 = MERGE_SORT_PLUS( A, s+1, k )
+        s = int((k - p)/3)*2 + p
+        porownania_1, przypisania_1 = MERGE_SORT_21_PLUS( A, p, s )
+        porownania_2, przypisania_2 = MERGE_SORT_21_PLUS( A, s+1, k )
         porownania_3, przypisania_3 = MERGE_PLUS( A, p, s, k )
         return v_sum( 
            ( porownania_1, przypisania_1),
@@ -128,6 +122,14 @@ def MERGE_SORT_PLUS(A, p, k):
             (porownania_3,przypisania_3)
             )
     return 0, 0
+
+# for _ in range(10**4):    
+#     A = randints( 1, 100, 10 )
+#     B = A.copy()
+#     MERGE_SORT_21_PLUS( A, 0, len(A)-1 )
+#     B.sort()
+#     if not np.array_equal(A, B):
+#         print('Uff')
 
 # A = randints( 1, 100, 10)
 # print( MERGE_SORT_PLUS( A, 0, len(A)-1 ) )

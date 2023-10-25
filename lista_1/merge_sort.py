@@ -65,15 +65,18 @@ def MERGE( A, p, s, k):
             A[l] = R[j]
             j += 1
 
-def MERGE_SORT(A, p, k):
+def MERGE_SORT(A, p=0, k=0, full_size=False):
+    if full_size:
+        p, k = 0, len(A)-1
     if p < k:
-        s = int( (p+k)/2 )
+        # s = int( (p+k)/2 )
+        s = int((k - p)/2) + p
         MERGE_SORT( A, p, s )
         MERGE_SORT( A, s+1, k )
         MERGE( A, p, s, k )
         
 # A = randints( 1, 100, 10 )
-# MERGE_SORT( A, 0, len(A)-1 )
+# MERGE_SORT( A, full_size=True)
 # print(A)
 
 
@@ -89,7 +92,7 @@ def MERGE_PLUS( A, p, s, k):
     porownania, przypisania = 0, 0
     ## A[p:s]=L i A[s+1:k]=R są posortowane
     ## n1 = len(L) = p-k+1 oraz n2 = len(R) = k-s
-    print( porownania, przypisania)
+    # print( porownania, przypisania)
     L = A[p:s+1] 
     R = A[s+1:k+1] 
     L = np.append( L, np.inf )
@@ -108,7 +111,9 @@ def MERGE_PLUS( A, p, s, k):
         porownania += 1
     return porownania, przypisania
 
-def MERGE_SORT_PLUS(A, p, k):
+def MERGE_SORT_PLUS(A, p=0, k=0, full_size=False):
+    if full_size:
+        p, k = 0, len(A)-1
     if p < k:
         s = int( (p+k)/2 )
         porownania_1, przypisania_1 = MERGE_SORT_PLUS( A, p, s )

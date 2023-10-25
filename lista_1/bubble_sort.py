@@ -30,7 +30,7 @@ def BUBBLE_SORT(A):
 #     if not np.array_equal(A, B):
 #         print('Uff')
 
-def BUBBLE_SORT_PLUS(A):
+def BUBBLE_SORT_PLUS(A, full_size=True):
     porownania = 0
     przypisania = 0
     for i in range( len(A) ):

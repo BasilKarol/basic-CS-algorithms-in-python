@@ -13,7 +13,7 @@ end while
 import numpy as np
 from numpy.random import randint as randints
 
-A = randints( 1, 100, 10 )
+# A = randints( 1, 100, 10 )
 
 ## zadanie 1
 def INSERTION_SORT( A ):
@@ -29,7 +29,7 @@ def INSERTION_SORT( A ):
 # print( A )
 
 ## zadanie 2
-def INSERTION_SORT_PLUS( A ):
+def INSERTION_SORT_PLUS( A, full_size=True ):
     porownania = 0
     przypisania = 0
     i = 0

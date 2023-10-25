@@ -58,8 +58,8 @@ def my_sum(A):
         counter += value
     return counter  
 
-n = 10**6
-pseudo_A = np.array( [random.randint(-100, 101) for _ in range(n) ] )
+# n = 10**6
+# pseudo_A = np.array( [random.randint(-100, 101) for _ in range(n) ] )
 def get_time(function):
     start = time.time()
     function(pseudo_A)
@@ -77,12 +77,12 @@ def get_time(function):
 
 ## zadanie 8
 my_list = [5, 8, 4, 7, 6, 2, 3]
-print(my_list)
+# print(my_list)
 def my_reverse(A):
     for index in range(0, int((len(A)-1)/2)+1 ):
         A[index], A[len(A)-index-1] = A[len(A)-index-1], A[index]
-my_reverse(my_list )
-print(my_list )
+# my_reverse(my_list )
+# print(my_list )
         
 
 
