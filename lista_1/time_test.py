@@ -1,6 +1,6 @@
 import numpy as np
 import time
-from numpy.random import randint as randints
+from numpy.random import uniform as randfloats
 
 from insertion_sort import INSERTION_SORT, INSERTION_SORT_PLUS
 from bubble_sort import BUBBLE_SORT, BUBBLE_SORT_PLUS
@@ -29,17 +29,17 @@ def get_time_matrix(function_list, TEST=False, sizes=[2, 3, 4]):
         for my_func in function_list:
             name = str(my_func )[10:-23]
             func_matrix = [name]            
-            A = randints( 1, 100, 10**size )
+            A = randfloats( 1, 100, 10**size )
             time_result, porownania, przypisania = get_time(my_func, A, full_size=True)
             func_matrix.append(  [time_result, porownania, przypisania ] )
             size_matrix.append( func_matrix )
+            if TEST:
+                print(f"{time_result: <10}\t|\t{name: <20}|{porownania: <7}|{przypisania: <7}")
         time_matrix.append(  size_matrix  )
-    if TEST:
-        print(f"{time_result: <10}\t|\t{name: <20}|{porownania: <7}|{przypisania: <7}")
     return np.array( time_matrix, dtype=object ) 
     
-# time_matrix = get_time_matrix(function_list)
-# print(time_matrix )
+time_matrix = get_time_matrix(function_list, TEST=True)
+print(time_matrix )
 
         
 
