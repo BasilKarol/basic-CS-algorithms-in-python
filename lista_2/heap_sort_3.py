@@ -34,11 +34,8 @@ def HEAPIFY3(A, i, i_stop):
     if i != Largest:
         A[i], A[Largest] = A[Largest], A[i]
         HEAPIFY3(A, Largest, i_stop)
-'''     
-                1
-        2       3       4
-5
-'''
+
+
 def BUILD_HEAP3(A):
     ## eq to range(n, -1, -1)
     for i in reversed(range( (len(A) // 3)+1 )):
@@ -88,7 +85,7 @@ def HEAPIFY3_PLUS(A, i, i_stop):
 def BUILD_HEAP3_PLUS(A):
     przyp = 0
     por = 0
-    for i in reversed(range(len(A) // 3)):
+    for i in reversed(range(len(A) // 3 +1)):
         przyp, por = v_sum(
             HEAPIFY3_PLUS(A, i, len(A)),
             (przyp, por)
@@ -107,6 +104,6 @@ def HEAP_SORT3_PLUS(A):
     return przyp, por
 
 if __name__ == "__main__":
-    A = [81, 89, 9, 11, 14, 76, 54, 22]
+    A = [1, 2]
     przyp, por = HEAP_SORT3_PLUS(A)
     print(A,  przyp, por)
