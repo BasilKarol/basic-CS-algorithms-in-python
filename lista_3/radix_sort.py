@@ -1,5 +1,6 @@
 import numpy as np
 from numpy.random import uniform as randfloats
+from numpy.random import randint
 
 '''
 base = 10
@@ -59,9 +60,9 @@ def RADIX_SORT(A, base=10):
 
 
 if __name__ == "__main__":
-    A = [170, 45, 75, 90, 802, 24, 2, 66]
-
-    RADIX_SORT(A, 10)
-    print(A)
-
+    # A = [170, 45, 75, 90, 802, 24, 2, 66]
+    # A = [-1, 1]
+    A = randint( 0, 2**63, 10**3, dtype=np.longlong )
+    RADIX_SORT(A,10)
+    # print(A)
 
