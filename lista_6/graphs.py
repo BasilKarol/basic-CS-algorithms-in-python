@@ -1,0 +1,17 @@
+'''
+DEFINICJA:
+    Fraf (nieskierowany) to ...
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
