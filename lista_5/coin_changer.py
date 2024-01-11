@@ -24,6 +24,9 @@ def DYNAMIC_COIN_CHANGING(coins, value):
         for i in range(coin, value+1):
             ##zawsze poczynamy z coin-i = coin-coin = 0
             coin_memo[i] = min(coin_memo[i], coin_memo[i - coin] + 1)
+            ## '+1' - sama moneta
+    if coin_memo[-1] == inf:
+        return 'sie nie da'
 
     ## odtwarzanie 
     result = []
@@ -32,10 +35,10 @@ def DYNAMIC_COIN_CHANGING(coins, value):
             if value - coin >= 0 and coin_memo[value] == coin_memo[value - coin] + 1:
                 result.append(coin)
                 value -= coin
-                break
-
+                break 
     return len(result), result
-# print( DYNAMIC_COIN_CHANGING( [15, 7, 1], 21 ) )
+    
+print( DYNAMIC_COIN_CHANGING( [5, 10], 17 ) )
 
 ################ Programowanie Zachłanne ##########
 def COIN_CHANGING(coins, value):
@@ -49,8 +52,8 @@ def COIN_CHANGING(coins, value):
     return len(result), result
 
 ## algorytm zachłanny nie znajduje optymalnego rozwiązania:
-error_value = 21
-error_coins = [15, 7, 1]  
+error_value = 7
+error_coins = [1, 3, 4, 5]  
 
 my_out = COIN_CHANGING( error_coins, error_value )
 perfect_out = DYNAMIC_COIN_CHANGING( error_coins, error_value )

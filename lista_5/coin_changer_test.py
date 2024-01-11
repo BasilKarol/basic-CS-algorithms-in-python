@@ -1,7 +1,9 @@
 from coin_changer import DYNAMIC_COIN_CHANGING, COIN_CHANGING
 
 def GENERATE_FAIL(value):
-    '''Dziala dla value >= 8 i value=6 '''
+    '''Dziala dla value >= 6 '''
+    if value == 7:
+        return [1, 3, 4, 5]
     a = 1
     b = value // 2
     c = int( value * (3/4) )  ## chyba b+2 tez zadziala
