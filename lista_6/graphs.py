@@ -39,8 +39,9 @@ Przeszukiwanie wszerz (BFS - Breadth-first search):
         s.pi = NIL
         s.d = 0
         s.color = 'szary'
-    
-    ENQUEUE( Q, s ):
+        Q = []
+        
+        ENQUEUE( Q, s )
         while Q:
             u = DEQUEUE(Q)
             for every v∈G.Adj[u]:
@@ -51,7 +52,46 @@ Przeszukiwanie wszerz (BFS - Breadth-first search):
                     ENQUEUE( Q, v )
             u.color = 'czarny'
     
+    PRINT_PATH( G, s, v ): 
+        "przeszukiwanie najkrotszej sciezki juz PO zrobieniu BFS"
+        if v == s:
+            print( s )
+        elif v.pi == NIL:
+            print( "Nie ma sciezki" )
+        else:
+            PRINT_PATH( G, s, v.pi )
+            print( v )
     
+    FAKT:
+        DFS robi las
+    DFS(G):
+        ## v.s - poczatek
+        ## v.pi - kto jest ojcem
+        ## v.m - koniec
+        ## v.color - kolor
+        
+        for every v∈G.V :
+            v.pi = NIL
+            v.color = 'bialy'
+        time = 0
+        
+        for every v∈G.V :
+            if v.color = 'bialy':
+                DFS_VISIT( G, v )
+    
+    DFS_VISIT( G, v ):
+        time += 1
+        v.s = time
+        v.color = 'szary'
+        
+        for every u∈G.Adj[v] :
+            if u.color == 'bialy':
+                u.pi = v
+                DFS_VISIT( G, u )
+        time += 1
+        v.m = time
+        v.color = 'czarny'
+            
 '''
 
 
